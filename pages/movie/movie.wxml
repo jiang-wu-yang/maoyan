@@ -1,0 +1,89 @@
+<!-- 顶部区域开始 -->
+<view class="movie-detail">
+  <view class="movie-filter"></view>
+  <!-- 背景图开始 -->
+  <view class="poster-background" style="background-image:url('{{movie.cover}}')">
+  </view>
+  <!-- 背景图结束 -->
+  <view class="detail">
+    <!--海报帧开始-->
+    <view class="poster">
+      <image src="{{movie.cover}}"></image>
+    </view>
+    <!--海报帧结束-->
+    <!-- 内容区域开始 -->
+    <view class="content">
+      <view class="title line-ellipsis">{{movie.moviename}}</view>
+      <view class="score line-ellipsis">{{movie.score}}</view>
+      <view class="type line-ellipsis">主演:{{movie.star}}</view>
+      <view class="type line-ellipsis">{{movie.movietype}}</view>
+      <view class="type line-ellipsis">{{movie.showingon}} 上映</view>
+    </view>
+    <!-- 内容区域结束 -->
+  </view>
+</view>
+<!-- 顶部区域结束 -->
+<!-- 简介区域开始 -->
+<view class="introduction"
+      bindtap="tapIntro">
+  <view class="{{isOpen ? '':'line-clamp'}}">
+    {{movie.description}}
+  </view>
+  <view class="more">
+    <image src="/images/{{isOpen ? 'arrow_up.png' : 'arrow_down.png'}}"></image>
+  </view>
+</view>
+<!-- 简介区域结束 -->
+<!-- 演职人员开始 -->
+<view class="actors">
+  <view class="title">演职人员</view>
+  <scroll-view scroll-x="true" class="actors-list">
+    <!-- 输出导演信息 -->
+    <view class="actors-item" wx:for="{{movie.director}}" wx:key="avatar">
+      <image src="{{item.avatar}}"></image>
+      <text>导演：{{item.name}}</text>
+    </view>
+    <!-- 输出演员信息 -->
+    <view class="actors-item" wx:for="{{movie.actor}}" wx:key="avatar">
+      <image src="{{item.avatar}}"></image>
+      <text>{{item.name}}</text>
+    </view>
+  </scroll-view>
+</view>
+<!-- 演职人员结束 -->
+<!-- 剧照开始 -->
+<view class="photos">
+  <view class="title">视频和剧照</view>
+  <scroll-view scroll-x="true" class="photos-list">
+    <!-- 遍历剧照列表 -->
+    <view class="photos-item" wx:for="{{movie.thumb}}" wx:key="*this" bindtap="tapPhoto" data-index="{{index}}">
+      <!-- aspectFill预防失真 -->
+      <image mode="aspectFill" src="{{item}}"></image>
+    </view>
+  </scroll-view>
+</view>
+<!-- 剧照结束 -->
+<!-- 评论开始 -->
+<view class="comments">
+  <view class="comment-item">
+    <view>
+      <image class="avatar" src="/images/nothing.png"></image>
+    </view>
+    <view class="right">
+      <view class="nickname">@刘小仙儿</view>
+      <view class="comment-content">
+        奔着我伦来期待这部电影的，一定要去看！这几天看那个演员请就位觉得郭敬明导演其实挺专业暖心的，以前不怎么喜欢他，通过这个综艺节目觉得他真的是个不错的导演，主演又是我们邓伦，特别期待</view>
+    </view>
+  </view>
+  <view class="comment-item">
+    <view>
+      <image class="avatar" src="/images/nothing.png"></image>
+    </view>
+    <view class="right">
+      <view class="nickname">@刘小仙儿</view>
+      <view class="comment-content">
+        奔着我伦来期待这部电影的，一定要去看！这几天看那个演员请就位觉得郭敬明导演其实挺专业暖心的，以前不怎么喜欢他，通过这个综艺节目觉得他真的是个不错的导演，主演又是我们邓伦，特别期待</view>
+    </view>
+  </view>
+</view>
+<!-- 评论结束 -->
